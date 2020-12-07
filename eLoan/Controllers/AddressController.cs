@@ -19,30 +19,6 @@ namespace eLoan.Controllers
             _context = context;
         }
 
-        // GET: Address
-        public async Task<IActionResult> Index()
-        {
-            return View(await _context.address.ToListAsync());
-        }
-
-        // GET: Address/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var address = await _context.address
-                .FirstOrDefaultAsync(m => m.address_id == id);
-            if (address == null)
-            {
-                return NotFound();
-            }
-
-            return View(address);
-        }
-
         // GET: Address/Create
         public IActionResult Create()
         {
@@ -63,86 +39,6 @@ namespace eLoan.Controllers
                 return RedirectToAction(nameof(Index));
             }
             return View(address);
-        }
-
-        // GET: Address/Edit/5
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var address = await _context.address.FindAsync(id);
-            if (address == null)
-            {
-                return NotFound();
-            }
-            return View(address);
-        }
-
-        // POST: Address/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("address_id,street,city,state,country,zip_code")] Address address)
-        {
-            if (id != address.address_id)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(address);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!AddressExists(address.address_id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            return View(address);
-        }
-
-        // GET: Address/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var address = await _context.address
-                .FirstOrDefaultAsync(m => m.address_id == id);
-            if (address == null)
-            {
-                return NotFound();
-            }
-
-            return View(address);
-        }
-
-        // POST: Address/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var address = await _context.address.FindAsync(id);
-            _context.address.Remove(address);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
         }
 
         private bool AddressExists(int id)
