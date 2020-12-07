@@ -1,4 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using eLoan.Models;
 
 namespace eLoan.Data
@@ -24,7 +24,7 @@ namespace eLoan.Data
         {
 
             modelBuilder.Entity<Address>().ToTable("Address");
-            //    modelBuilder.Entity<Application>().ToTable("Application");
+            modelBuilder.Entity<Application>().ToTable("Application");
             //    modelBuilder.Entity<Bank>().ToTable("Bank");
             //    modelBuilder.Entity<Customer>().ToTable("Customer");
             //    modelBuilder.Entity<Loan>().ToTable("Loan");
@@ -34,6 +34,11 @@ namespace eLoan.Data
             //    //Database testing
             //    modelBuilder.Entity<TestTable>().ToTable("TestTable");
         }
+
+        //Database testing
+        //public DbSet<TestTable> testTables { get; set; }
+
+        public DbSet<eLoan.Models.Application> Application { get; set; }
 
     }
 }

@@ -34,9 +34,10 @@ namespace eLoan.Controllers
             {
                 _context.Add(profile);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Create", "Application", new { profile_id = profile.profile_id });
             }
-            return View(profile);
+            // Incase an error occurs
+            return View("Create");
         }
         // TODO Currently address_id is visible in view. Change that.
     }

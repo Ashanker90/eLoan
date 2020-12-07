@@ -1,0 +1,78 @@
+@model eLoan.Models.Application
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Application</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="last4ssn" class="control-label"></label>
+                <input asp-for="last4ssn" class="form-control" />
+                <span asp-validation-for="last4ssn" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="loan_state" class="control-label"></label>
+                <input asp-for="loan_state" class="form-control" />
+                <span asp-validation-for="loan_state" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="employee_name" class="control-label"></label>
+                <input asp-for="employee_name" class="form-control" />
+                <span asp-validation-for="employee_name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="monthly_salary" class="control-label"></label>
+                <input asp-for="monthly_salary" class="form-control" />
+                <span asp-validation-for="monthly_salary" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="rent_mortgage_expense" class="control-label"></label>
+                <input asp-for="rent_mortgage_expense" class="form-control" />
+                <span asp-validation-for="rent_mortgage_expense" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="additional_expense" class="control-label"></label>
+                <input asp-for="additional_expense" class="form-control" />
+                <span asp-validation-for="additional_expense" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="amount_requested" class="control-label"></label>
+                <input asp-for="amount_requested" class="form-control" />
+                <span asp-validation-for="amount_requested" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="tenure_in_months" class="control-label"></label>
+                <input asp-for="tenure_in_months" class="form-control" />
+                <span asp-validation-for="tenure_in_months" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="application_date" class="control-label"></label>
+                <input asp-for="application_date" class="form-control" />
+                <span asp-validation-for="application_date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="profile_id" class="control-label"></label>
+                <input asp-for="profile_id" class="form-control" />
+                <span asp-validation-for="profile_id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
