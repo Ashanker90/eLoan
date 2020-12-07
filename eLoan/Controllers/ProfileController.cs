@@ -10,35 +10,34 @@ using eLoan.Models;
 
 namespace eLoan.Controllers
 {
-    public class AddressController : Controller
+    public class ProfileController : Controller
     {
         private readonly eLoanContext _context;
 
-        public AddressController(eLoanContext context)
+        public ProfileController(eLoanContext context)
         {
             _context = context;
         }
 
-        // GET: Address/Create
-        public IActionResult Create()
+        // GET: Profile/Create
+        public IActionResult Create(string address_id)
         {
             return View();
         }
 
-        // POST: Address/Create
+        // POST: Profile/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("address_id,street,city,state,country,zip_code")] Address address)
+        public async Task<IActionResult> Create([Bind("profile_id,first_name,last_name,email,birthdate,phone_number,address_id")] Profile profile)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(address);
+                _context.Add(profile);
                 await _context.SaveChangesAsync();
-                // Pass address_id since its a foriegn key
-                return RedirectToAction("Create", "Profile", new { address_id = address.address_id });
+                return RedirectToAction(nameof(Index));
             }
-            // Incase an error occurs
-            return View("Create");
+            return View(profile);
         }
+        // TODO Currently address_id is visible in view. Change that.
     }
 }
