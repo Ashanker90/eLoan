@@ -1,0 +1,53 @@
+﻿@model IEnumerable<eLoan_Project.Models.Bank>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.customer_ID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.bank_name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.routing_number)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.account_number)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.customer_ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.bank_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.routing_number)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.account_number)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.bank_ID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.bank_ID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.bank_ID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

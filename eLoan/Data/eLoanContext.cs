@@ -1,5 +1,6 @@
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using eLoan.Models;
+using eLoan_Project.Models;
 
 namespace eLoan.Data
 {
@@ -39,6 +40,26 @@ namespace eLoan.Data
         //public DbSet<TestTable> testTables { get; set; }
 
         public DbSet<eLoan.Models.Application> Application { get; set; }
+
+        //Database testing
+        //public DbSet<TestTable> testTables { get; set; }
+
+        public DbSet<eLoan_Project.Models.Bank> Bank { get; set; }
+
+        //Database testing
+        //public DbSet<TestTable> testTables { get; set; }
+
+        public DbSet<eLoan_Project.Models.Customer> Customer { get; set; }
+
+        //Database testing
+        //public DbSet<TestTable> testTables { get; set; }
+
+        public DbSet<eLoan_Project.Models.Loan> Loan { get; set; }
+
+        //Database testing
+        //public DbSet<TestTable> testTables { get; set; }
+
+        public DbSet<eLoan_Project.Models.Login> Login { get; set; }
 
     }
 }
