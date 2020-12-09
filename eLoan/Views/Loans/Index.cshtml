@@ -1,0 +1,59 @@
+﻿@model IEnumerable<eLoan.Models.Loan>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.loan_amount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.balance_remaining)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.interest_rate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tenure_length)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.loan_date)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.loan_amount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.balance_remaining)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.interest_rate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tenure_length)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.loan_date)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.loan_ID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.loan_ID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.loan_ID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
