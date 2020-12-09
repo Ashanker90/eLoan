@@ -44,22 +44,22 @@ namespace eLoan.Data
         //Database testing
         //public DbSet<TestTable> testTables { get; set; }
 
-        public DbSet<eLoan_Project.Models.Bank> Bank { get; set; }
+        public DbSet<eLoan.Models.Bank> Bank { get; set; }
 
         //Database testing
         //public DbSet<TestTable> testTables { get; set; }
 
-        public DbSet<eLoan_Project.Models.Customer> Customer { get; set; }
+        public DbSet<eLoan.Models.Customer> Customer { get; set; }
 
         //Database testing
         //public DbSet<TestTable> testTables { get; set; }
 
-        public DbSet<eLoan_Project.Models.Loan> Loan { get; set; }
+        public DbSet<eLoan.Models.Loan> Loan { get; set; }
 
         //Database testing
         //public DbSet<TestTable> testTables { get; set; }
 
-        public DbSet<eLoan_Project.Models.Login> Login { get; set; }
+        public DbSet<eLoan.Models.Login> Login { get; set; }
 
     }
 }

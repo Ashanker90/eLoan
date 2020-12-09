@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace eLoan_Project.Models
+namespace eLoan.Models
 {
     public class Customer
     {
