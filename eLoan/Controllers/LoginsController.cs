@@ -22,7 +22,7 @@ namespace eLoan.Controllers
         // GET: Logins
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Login.ToListAsync());
+            return View();
         }
 
         // GET: Logins/Details/5
@@ -34,7 +34,7 @@ namespace eLoan.Controllers
             }
 
             var login = await _context.Login
-                .FirstOrDefaultAsync(m => m.email_address == id);
+                .FirstOrDefaultAsync(m => m.email == id);
             if (login == null)
             {
                 return NotFound();
@@ -54,14 +54,28 @@ namespace eLoan.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("email_address,password,customer_ID")] Login login)
+        public async Task<IActionResult> Create([Bind("email,password,customer_ID")] Login login)
         {
             if (ModelState.IsValid)
             {
                 _context.Add(login);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(LoginPage));
             }
+            return View(login);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> LoginPage([Bind("email,password")] Login login)
+        {
+            if (await _context.Login.FindAsync(login.email) != null)
+            {
+                if (login.password == _context.Login.Find(login.email).password){
+                    RedirectToAction("Details", "Profile");
+                }
+            }
+
             return View(login);
         }
 
@@ -86,9 +100,9 @@ namespace eLoan.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("email_address,password,customer_ID")] Login login)
+        public async Task<IActionResult> Edit(string id, [Bind("email,password,customer_ID")] Login login)
         {
-            if (id != login.email_address)
+            if (id != login.email)
             {
                 return NotFound();
             }
@@ -102,7 +116,7 @@ namespace eLoan.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!LoginExists(login.email_address))
+                    if (!LoginExists(login.email))
                     {
                         return NotFound();
                     }
@@ -125,7 +139,7 @@ namespace eLoan.Controllers
             }
 
             var login = await _context.Login
-                .FirstOrDefaultAsync(m => m.email_address == id);
+                .FirstOrDefaultAsync(m => m.email == id);
             if (login == null)
             {
                 return NotFound();
@@ -147,7 +161,7 @@ namespace eLoan.Controllers
 
         private bool LoginExists(string id)
         {
-            return _context.Login.Any(e => e.email_address == id);
+            return _context.Login.Any(e => e.email == id);
         }
     }
 }
