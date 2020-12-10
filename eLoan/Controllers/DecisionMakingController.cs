@@ -28,6 +28,7 @@ namespace eLoan.Controllers
         public const string app_id = "app_id";
         public const string profile_id = "profile_id";
         public const string loan_details_id = "loan_details_id";
+        //public const string email = "email";
 
         public async Task<IActionResult> DecisionAsync(Application app)
         {
@@ -64,7 +65,7 @@ namespace eLoan.Controllers
 
                 ViewData["loan_details_id"] = HttpContext.Session.GetInt32(loan_details_id);
 
-          
+                //HttpContext.Session.SetString(email, );
 
                 return View("~/Views/DecisionMaking/LoanApproved.cshtml");
             } else

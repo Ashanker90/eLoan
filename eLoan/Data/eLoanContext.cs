@@ -15,7 +15,7 @@ namespace eLoan.Data
         public DbSet<Bank_details> bank_details { get; set; }
         public DbSet<Customer> customers { get; set; }
         public DbSet<Loan_details> loan_details { get; set; }
-        //public DbSet<Login> logins { get; set; }
+        public DbSet<Login> logins { get; set; }
         public DbSet<Profile> profiles { get; set; }
 
         //Database testing
@@ -23,43 +23,14 @@ namespace eLoan.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-
             modelBuilder.Entity<Address>().ToTable("Address");
             modelBuilder.Entity<Application>().ToTable("Application");
             modelBuilder.Entity<Bank_details>().ToTable("Bank_details");
             modelBuilder.Entity<Customer>().ToTable("Customer");
             modelBuilder.Entity<Loan_details>().ToTable("Loan_details");
-            //    modelBuilder.Entity<Login>().ToTable("Login");
+            modelBuilder.Entity<Login>().ToTable("Login");
             modelBuilder.Entity<Profile>().ToTable("Profile");
-
-            //    //Database testing
-            //    modelBuilder.Entity<TestTable>().ToTable("TestTable");
         }
-
-        //Database testing
-        //public DbSet<TestTable> testTables { get; set; }
-
-        //public DbSet<eLoan.Models.Application> Application { get; set; }
-
-        //Database testing
-        //public DbSet<TestTable> testTables { get; set; }
-
-        //public DbSet<eLoan.Models.Bank> Bank { get; set; }
-
-        //Database testing
-        //public DbSet<TestTable> testTables { get; set; }
-
-        //public DbSet<eLoan.Models.Customer> Customer { get; set; }
-
-        //Database testing
-        //public DbSet<TestTable> testTables { get; set; }
-
-        //public DbSet<eLoan.Models.Loan> Loan { get; set; }
-
-        //Database testing
-        //public DbSet<TestTable> testTables { get; set; }
-
-        public DbSet<eLoan.Models.Login> Login { get; set; }
 
     }
 }
