@@ -27,8 +27,6 @@ namespace eLoan.Controllers
         }
 
         // POST: Application/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("application_id,last4ssn,loan_state,employee_name,monthly_salary,rent_mortgage_expense,additional_expense,amount_requested,tenure_in_months,application_date,profile_id")] Application application)
@@ -39,7 +37,7 @@ namespace eLoan.Controllers
             {
                 _context.Add(application);
                 await _context.SaveChangesAsync();
-                return RedirectToAction("Create", "Logins");
+                return RedirectToAction("Decision", "DecisionMaking", application);
             }
             ViewData["profile_id"] = new SelectList(_context.profiles, "profile_id", "profile_id", application.profile_id);
             return View(application);

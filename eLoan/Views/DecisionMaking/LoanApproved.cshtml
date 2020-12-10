@@ -1,0 +1,17 @@
+﻿@{
+    ViewData["Title"] = "LoanApproved";
+}
+
+<h1>Loan Details</h1>
+
+<div>
+    <h2>Your Loan Was approved! Here are your approval details:</h2>
+</div>
+<div>
+    <h4>Loan amount: $@ViewData["loan"]</h4>
+    <h4>Interest Rate: @ViewData["interest_rate"]% APR</h4>
+    <h4>Tenure: @ViewData["tenure"] months</h4>
+</div>
+<div>
+    <a asp-controller="Login" asp-action="Create">Please click here to create your account</a>
+</div>
