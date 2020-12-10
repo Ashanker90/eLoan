@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using eLoan.Data;
 using eLoan.Models;
+using Microsoft.AspNetCore.Http;
 
 namespace eLoan.Controllers
 {
@@ -23,6 +24,9 @@ namespace eLoan.Controllers
         private double loan_amount;
         private double interest_rate;
         private int tenure;
+        //const int app_id = 0;
+        public const string app_id = "app_id";
+        public const string profile_id = "profile_id";
 
         public IActionResult Decision(Application app)
         {
@@ -39,6 +43,12 @@ namespace eLoan.Controllers
                 ViewData["loan"] = loan_amount;
                 ViewData["interest_rate"] = interest_rate;
                 ViewData["tenure"] = tenure;
+
+                HttpContext.Session.SetInt32(app_id, app.application_id);
+                HttpContext.Session.SetInt32(profile_id, app.profile_id);
+
+                ViewData["app_id"] = HttpContext.Session.GetInt32(app_id);
+
                 return View("~/Views/DecisionMaking/LoanApproved.cshtml");
             } else
             {
