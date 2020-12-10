@@ -1,0 +1,36 @@
+@model eLoan.Models.Bank_details
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Bank_details</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.bank_name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.bank_name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.routing_number)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.routing_number)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.account_number)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.account_number)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.bank_details_id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

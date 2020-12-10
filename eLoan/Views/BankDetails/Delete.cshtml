@@ -1,0 +1,39 @@
+@model eLoan.Models.Bank_details
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Bank_details</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.bank_name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.bank_name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.routing_number)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.routing_number)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.account_number)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.account_number)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="bank_details_id" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

@@ -11,8 +11,8 @@ namespace eLoan.Data
         }
 
         public DbSet<Address> address { get; set; }
-        //public DbSet<Application> applications { get; set; }
-        //public DbSet<Bank> banks { get; set; }
+        public DbSet<Application> applications { get; set; }
+        public DbSet<Bank_details> bank_details { get; set; }
         //public DbSet<Customer> customers { get; set; }
         //public DbSet<Loan> loans { get; set; }
         //public DbSet<Login> logins { get; set; }
@@ -26,7 +26,7 @@ namespace eLoan.Data
 
             modelBuilder.Entity<Address>().ToTable("Address");
             modelBuilder.Entity<Application>().ToTable("Application");
-            //    modelBuilder.Entity<Bank>().ToTable("Bank");
+            modelBuilder.Entity<Bank_details>().ToTable("Bank_details");
             //    modelBuilder.Entity<Customer>().ToTable("Customer");
             //    modelBuilder.Entity<Loan>().ToTable("Loan");
             //    modelBuilder.Entity<Login>().ToTable("Login");
@@ -39,22 +39,22 @@ namespace eLoan.Data
         //Database testing
         //public DbSet<TestTable> testTables { get; set; }
 
-        public DbSet<eLoan.Models.Application> Application { get; set; }
+        //public DbSet<eLoan.Models.Application> Application { get; set; }
 
         //Database testing
         //public DbSet<TestTable> testTables { get; set; }
 
-        public DbSet<eLoan.Models.Bank> Bank { get; set; }
+        //public DbSet<eLoan.Models.Bank> Bank { get; set; }
 
         //Database testing
         //public DbSet<TestTable> testTables { get; set; }
 
-        public DbSet<eLoan.Models.Customer> Customer { get; set; }
+        //public DbSet<eLoan.Models.Customer> Customer { get; set; }
 
         //Database testing
         //public DbSet<TestTable> testTables { get; set; }
 
-        public DbSet<eLoan.Models.Loan> Loan { get; set; }
+        //public DbSet<eLoan.Models.Loan> Loan { get; set; }
 
         //Database testing
         //public DbSet<TestTable> testTables { get; set; }
