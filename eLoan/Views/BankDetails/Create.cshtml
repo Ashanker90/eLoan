@@ -1,12 +1,12 @@
 @model eLoan.Models.Bank_details
+@using Microsoft.AspNetCore.Http
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
 
-@{
-    ViewData["Title"] = "Create";
-}
+@{ ViewData["Title"] = "Create"; }
 
 <h1>Create</h1>
 
-<h4>Bank_details</h4>
+<h4>Add Bank details for Application ID: @HttpContextAccessor.HttpContext.Session.GetInt32("app_id")</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">

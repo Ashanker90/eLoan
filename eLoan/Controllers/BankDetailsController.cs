@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using eLoan.Data;
 using eLoan.Models;
+using Microsoft.AspNetCore.Http;
 
 namespace eLoan.Controllers
 {
@@ -56,10 +57,12 @@ namespace eLoan.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("bank_details_id,bank_name,routing_number,account_number")] Bank_details bank_details)
         {
+           
             if (ModelState.IsValid)
             {
                 _context.Add(bank_details);
                 await _context.SaveChangesAsync();
+                
                 return RedirectToAction(nameof(Index));
             }
             return View(bank_details);
