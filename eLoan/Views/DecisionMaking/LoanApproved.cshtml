@@ -13,7 +13,8 @@
     <h4>Interest Rate: @ViewData["interest_rate"]% APR</h4>
     <h4>Tenure: @ViewData["tenure"] months</h4>
     <h4>App ID:@ViewData["app_id"]</h4>
+    <h4>Loan Details ID:@ViewData["loan_details_id"]</h4>
 </div>
 <div>
-    <a asp-controller="BankDetails" asp-action="Create">Please click here to give your bank details.</a>
+    <a asp-controller="LoanDetails" asp-action="Create" asp-protocol="POST">Please click here to give your bank details.</a>
 </div>

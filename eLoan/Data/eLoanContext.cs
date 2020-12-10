@@ -14,7 +14,7 @@ namespace eLoan.Data
         public DbSet<Application> applications { get; set; }
         public DbSet<Bank_details> bank_details { get; set; }
         //public DbSet<Customer> customers { get; set; }
-        //public DbSet<Loan> loans { get; set; }
+        public DbSet<Loan_details> loan_details { get; set; }
         //public DbSet<Login> logins { get; set; }
         public DbSet<Profile> profiles { get; set; }
 
@@ -28,7 +28,7 @@ namespace eLoan.Data
             modelBuilder.Entity<Application>().ToTable("Application");
             modelBuilder.Entity<Bank_details>().ToTable("Bank_details");
             //    modelBuilder.Entity<Customer>().ToTable("Customer");
-            //    modelBuilder.Entity<Loan>().ToTable("Loan");
+            modelBuilder.Entity<Loan_details>().ToTable("Loan_details");
             //    modelBuilder.Entity<Login>().ToTable("Login");
             modelBuilder.Entity<Profile>().ToTable("Profile");
 

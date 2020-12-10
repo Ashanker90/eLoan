@@ -27,8 +27,9 @@ namespace eLoan.Controllers
         //const int app_id = 0;
         public const string app_id = "app_id";
         public const string profile_id = "profile_id";
+        public const string loan_details_id = "loan_details_id";
 
-        public IActionResult Decision(Application app)
+        public async Task<IActionResult> DecisionAsync(Application app)
         {
 
             DecisionMakingScript helper = new DecisionMakingScript(app, _context);
@@ -49,6 +50,21 @@ namespace eLoan.Controllers
 
                 ViewData["app_id"] = HttpContext.Session.GetInt32(app_id);
 
+                var ld = new Loan_details();
+                ld.balance = (float)loan_amount;
+                ld.loan_amount = (float)loan_amount;
+                ld.interest_rate = (float)interest_rate;
+                ld.tenure = tenure;
+                ld.loan_date = DateTime.Today;
+                _context.Add(ld);
+
+                await _context.SaveChangesAsync();
+                //await _context.SaveChangesAsync();
+
+                HttpContext.Session.SetInt32(loan_details_id, ld.loan_details_id);
+
+                ViewData["loan_details_id"] = HttpContext.Session.GetInt32(loan_details_id);
+
                 return View("~/Views/DecisionMaking/LoanApproved.cshtml");
             } else
             {
@@ -56,6 +72,8 @@ namespace eLoan.Controllers
             }
         }
 
+        //public IActionResult create_loan(Application app)
+        //{ }
         //private object DecisionMakingScript(Application app, eLoanContext context)
         //{
         //    throw new NotImplementedException();
