@@ -14,12 +14,14 @@ namespace eLoan.Controllers
     public class BankDetailsController : Controller
     {
         private readonly eLoanContext _context;
+                public const string app_id = "app_id";
 
         public BankDetailsController(eLoanContext context)
         {
             _context = context;
         }
 
+        public const string customer_id = "customer_id";
         // GET: BankDetails
         public async Task<IActionResult> Index()
         {
@@ -62,8 +64,18 @@ namespace eLoan.Controllers
             {
                 _context.Add(bank_details);
                 await _context.SaveChangesAsync();
-                
-                return RedirectToAction(nameof(Index));
+
+                var c = new Customer();
+                c.application_id = (int)HttpContext.Session.GetInt32("app_id");
+                c.profile_id = (int)HttpContext.Session.GetInt32("profile_id"); ;
+                c.loan_details_id = (int)HttpContext.Session.GetInt32("loan_details_id");
+                c.bank_details_id = bank_details.bank_details_id;
+
+                _context.Add(c);
+                await _context.SaveChangesAsync();
+
+                HttpContext.Session.SetInt32(customer_id, c.customer_id);
+                return RedirectToAction("Create", "Login");
             }
             return View(bank_details);
         }

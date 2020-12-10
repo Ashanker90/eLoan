@@ -59,11 +59,12 @@ namespace eLoan.Controllers
                 _context.Add(ld);
 
                 await _context.SaveChangesAsync();
-                //await _context.SaveChangesAsync();
 
                 HttpContext.Session.SetInt32(loan_details_id, ld.loan_details_id);
 
                 ViewData["loan_details_id"] = HttpContext.Session.GetInt32(loan_details_id);
+
+          
 
                 return View("~/Views/DecisionMaking/LoanApproved.cshtml");
             } else
