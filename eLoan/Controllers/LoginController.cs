@@ -48,7 +48,7 @@ namespace eLoan.Controllers
             HttpContext.Session.SetInt32(customer_id, incoming_login.customer_id);
             HttpContext.Session.SetString(logged_in, "true");
 
-            return RedirectToAction("Index", "Customer", new { login_details.customer_id });
+            return RedirectToAction("Details", "Customer", new { id = login_details.customer_id });
         }
     }
 }

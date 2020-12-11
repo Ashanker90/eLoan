@@ -10,24 +10,24 @@ using eLoan.Models;
 
 namespace eLoan.Controllers
 {
-    public class CustomersController : Controller
+    public class CustomerController : Controller
     {
         private readonly eLoanContext _context;
 
-        public CustomersController(eLoanContext context)
+        public CustomerController(eLoanContext context)
         {
             _context = context;
         }
 
-        // GET: Customers
-        public async Task<IActionResult> IndexBAD(int? id)
+        // GET: Customer
+        public async Task<IActionResult> Index()
         {
             var eLoanContext = _context.customers.Include(c => c.Application).Include(c => c.Bank_details).Include(c => c.Loan_details).Include(c => c.Profile);
             return View(await eLoanContext.ToListAsync());
         }
 
-        // GET: Customers/Details/5
-        public async Task<IActionResult>Index(int? id)
+        // GET: Customer/Details/5
+        public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
             {
@@ -40,6 +40,7 @@ namespace eLoan.Controllers
                 .Include(c => c.Loan_details)
                 .Include(c => c.Profile)
                 .FirstOrDefaultAsync(m => m.customer_id == id);
+            
             if (customer == null)
             {
                 return NotFound();
@@ -48,7 +49,7 @@ namespace eLoan.Controllers
             return View(customer);
         }
 
-        // GET: Customers/Create
+        // GET: Customer/Create
         public IActionResult Create()
         {
             ViewData["application_id"] = new SelectList(_context.applications, "application_id", "application_id");
@@ -58,7 +59,7 @@ namespace eLoan.Controllers
             return View();
         }
 
-        // POST: Customers/Create
+        // POST: Customer/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -78,7 +79,7 @@ namespace eLoan.Controllers
             return View(customer);
         }
 
-        // GET: Customers/Edit/5
+        // GET: Customer/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -98,7 +99,7 @@ namespace eLoan.Controllers
             return View(customer);
         }
 
-        // POST: Customers/Edit/5
+        // POST: Customer/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -137,7 +138,7 @@ namespace eLoan.Controllers
             return View(customer);
         }
 
-        // GET: Customers/Delete/5
+        // GET: Customer/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -159,7 +160,7 @@ namespace eLoan.Controllers
             return View(customer);
         }
 
-        // POST: Customers/Delete/5
+        // POST: Customer/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
