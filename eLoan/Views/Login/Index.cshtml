@@ -1,41 +1,35 @@
-@model IEnumerable<eLoan.Models.Login>
+﻿@model eLoan.Models.Login
 
-@{
-    ViewData["Title"] = "Index";
+@{ ViewData["Title"] = "Index"; }
+
+<h1>Welcome back to E-Loan</h1>
+
+<h4>Please Login</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Index">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="email" class="control-label"></label>
+                <input asp-for="email" class="form-control" />
+                <span asp-validation-for="email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="password" class="control-label"></label>
+                <input asp-for="password" class="form-control" />
+                <span asp-validation-for="password" class="text-danger"></span>
+            </div>
+
+            @*<p>Your customer ID is : @HttpContextAccessor.HttpContext.Session.GetInt32("customer_id")</p>*@
+            <div class="form-group">
+                <input type="submit" value="Submit and Login" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
 
-<h1>Index</h1>
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.password)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Customer)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.password)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Customer.customer_id)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.email">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.email">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.email">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>

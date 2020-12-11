@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using eLoan.Data;
 using eLoan.Models;
+using Microsoft.AspNetCore.Http;
 
 namespace eLoan.Controllers
 {
@@ -18,6 +19,8 @@ namespace eLoan.Controllers
         {
             _context = context;
         }
+
+        public const string email = "email";
 
         // GET: Profile/Create
         public IActionResult Create(string address_id)
@@ -34,6 +37,8 @@ namespace eLoan.Controllers
             {
                 _context.Add(profile);
                 await _context.SaveChangesAsync();
+
+                HttpContext.Session.SetString(email, profile.email);
                 return RedirectToAction("Create", "Application", new { profile_id = profile.profile_id });
             }
             // Incase an error occurs
