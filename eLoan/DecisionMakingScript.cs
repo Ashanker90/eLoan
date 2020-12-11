@@ -19,10 +19,6 @@ namespace eLoan
             //Application application = ReadApplicationData(context, application_id, profile_id);
         }
 
-        //public DecisionMakingScript()
-        //{
-            
-        //}
 
         public double rent_morgage()
         {
@@ -116,6 +112,16 @@ namespace eLoan
             // If expense_percentage is 55% of total income, the rate is higher 5.5%
             // In short: The more a user has saved the lesser the interest rate.
             return expense_percentage/10;
+        }
+
+        public double Monthly_payment()
+        {
+            double tenure = this.tenure_in_months();
+            double loan_amount = this.Loan_amount();
+            double interest_rate = this.Interest_rate();
+            double base_monthly = loan_amount/tenure;
+
+            return base_monthly + (base_monthly * interest_rate / 100);
         }
     }
 }

@@ -24,6 +24,7 @@ namespace eLoan.Controllers
         private double loan_amount;
         private double interest_rate;
         private int tenure;
+        private double monthly_payment;
         //const int app_id = 0;
         public const string app_id = "app_id";
         public const string profile_id = "profile_id";
@@ -42,9 +43,11 @@ namespace eLoan.Controllers
                 loan_amount = helper.Loan_amount();
                 interest_rate = helper.Interest_rate();
                 tenure = helper.tenure_in_months();
+                monthly_payment = helper.Monthly_payment();
                 ViewData["loan"] = loan_amount;
                 ViewData["interest_rate"] = interest_rate;
                 ViewData["tenure"] = tenure;
+                ViewData["monthly_payment"] = monthly_payment;
 
                 HttpContext.Session.SetInt32(app_id, app.application_id);
                 HttpContext.Session.SetInt32(profile_id, app.profile_id);

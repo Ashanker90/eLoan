@@ -14,7 +14,7 @@ namespace eLoan.Controllers
     public class BankDetailsController : Controller
     {
         private readonly eLoanContext _context;
-                public const string app_id = "app_id";
+        public const string app_id = "app_id";
 
         public BankDetailsController(eLoanContext context)
         {
@@ -75,7 +75,7 @@ namespace eLoan.Controllers
                 await _context.SaveChangesAsync();
 
                 HttpContext.Session.SetInt32(customer_id, c.customer_id);
-                return RedirectToAction("Create", "Login");
+                return RedirectToAction("Create", "Register");
             }
             return View(bank_details);
         }

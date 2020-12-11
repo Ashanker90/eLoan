@@ -1,7 +1,5 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
-// Add for Foreign key
-// https://stackoverflow.com/questions/39601623/the-type-or-namespace-name-foreignkey-could-not-be-found
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace eLoan.Models
