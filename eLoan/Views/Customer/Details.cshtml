@@ -1,0 +1,50 @@
+﻿@model eLoan.Models.Customer
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Customer</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-lg-2">
+            @Html.DisplayNameFor(model => model.Profile)
+        </dt>
+        <dd class="col-lg-10">
+            @Html.DisplayFor(model => model.Profile.profile_id)
+            @Html.DisplayFor(model => model.Profile.first_name)
+            @Html.DisplayFor(model => model.Profile.last_name)
+            @Html.DisplayFor(model => model.Profile.email)
+            @Html.DisplayFor(model => model.Profile.phone_number)
+            
+        </dd>
+        <dt class = "col-lg-2">
+            @Html.DisplayNameFor(model => model.Loan_details)
+        </dt>
+        <dd class="col-lg-10">
+            @Html.DisplayFor(model => model.Loan_details.loan_details_id)
+            @Html.DisplayFor(model => model.Loan_details.loan_amount)
+            @Html.DisplayFor(model => model.Loan_details.balance)
+            @Html.DisplayFor(model => model.Loan_details.interest_rate)
+            @Html.DisplayFor(model => model.Loan_details.tenure)
+            @Html.DisplayFor(model => model.Loan_details.loan_date)
+
+        </dd>
+        <dt class = "col-lg-2">
+            @Html.DisplayNameFor(model => model.Bank_details)
+        </dt>
+        <dd class="col-lg-10">
+            @Html.DisplayFor(model => model.Bank_details.bank_details_id)
+            @Html.DisplayFor(model => model.Bank_details.bank_name)
+            @Html.DisplayFor(model => model.Bank_details.routing_number)
+            @Html.DisplayFor(model => model.Bank_details.account_number)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.customer_id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

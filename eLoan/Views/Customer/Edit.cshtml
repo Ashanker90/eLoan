@@ -1,0 +1,49 @@
+﻿@model eLoan.Models.Customer
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Customer</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="customer_id" />
+            <div class="form-group">
+                <label asp-for="profile_id" class="control-label"></label>
+                <select asp-for="profile_id" class="form-control" asp-items="ViewBag.profile_id"></select>
+                <span asp-validation-for="profile_id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="application_id" class="control-label"></label>
+                <select asp-for="application_id" class="form-control" asp-items="ViewBag.application_id"></select>
+                <span asp-validation-for="application_id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="loan_details_id" class="control-label"></label>
+                <select asp-for="loan_details_id" class="form-control" asp-items="ViewBag.loan_details_id"></select>
+                <span asp-validation-for="loan_details_id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="bank_details_id" class="control-label"></label>
+                <select asp-for="bank_details_id" class="form-control" asp-items="ViewBag.bank_details_id"></select>
+                <span asp-validation-for="bank_details_id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
