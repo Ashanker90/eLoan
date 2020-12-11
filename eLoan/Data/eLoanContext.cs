@@ -6,6 +6,7 @@ namespace eLoan.Data
 {
     public class eLoanContext : DbContext
     {
+
         public eLoanContext(DbContextOptions<eLoanContext> options) : base(options)
         {
         }
